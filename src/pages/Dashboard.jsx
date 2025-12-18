@@ -4,15 +4,22 @@ import axios from 'axios';
 import { faUser, faNewspaper } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-// 🎯 IMPORTACIONES OPTIMIZADAS SEGÚN TU NUEVA ESTRUCTURA
+// 🎯 IMPORTACIONES OPTIMIZADAS
 import NavBar from '../components/layouts/NavBar';
 import PostForm from '../features/posts/components/PostForm';
 import PostItem from '../features/posts/components/PostItem';
 
-// Importamos su CSS compañero
 import './Dashboard.css';
 
-const API_FEED_URL = 'http://localhost:5000/api/publicaciones';
+// -----------------------------------------------------------------------------
+// 🎯 CAMBIO "IDEAL": Configuración Dinámica de la URL
+// -----------------------------------------------------------------------------
+// 1. Detecta la URL base (Vercel o Localhost)
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+// 2. Construye la ruta específica para el Feed de publicaciones
+const API_FEED_URL = `${BASE_URL}/api/publicaciones`;
+// -----------------------------------------------------------------------------
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -26,6 +33,7 @@ const Dashboard = () => {
         if (!token) { navigate('/login'); return; }
 
         try {
+            // OJO: Aquí usa la nueva URL dinámica
             const res = await axios.get(API_FEED_URL, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });

@@ -2,9 +2,17 @@ import { useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faSave } from '@fortawesome/free-solid-svg-icons';
-import './RecursoForm.css'; // Crearemos este CSS pequeño abajo
+import './RecursoForm.css';
 
-const API_URL = 'http://localhost:5000/api/recursos';
+// -----------------------------------------------------------------------------
+// 🎯 CAMBIO "IDEAL": Configuración Dinámica de la URL
+// -----------------------------------------------------------------------------
+// 1. Detecta la URL base (Vercel o Localhost)
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+// 2. Construye la ruta específica para los recursos
+const API_URL = `${BASE_URL}/api/recursos`;
+// -----------------------------------------------------------------------------
 
 function RecursoForm({ onClose, onRecursoCreated }) {
     const [tipo, setTipo] = useState('TESIS');
@@ -16,7 +24,8 @@ function RecursoForm({ onClose, onRecursoCreated }) {
         universidad: '',
         url_pdf: '',
         duracion: '',
-        plataforma: 'YouTube'
+        plataforma: 'YouTube',
+        url_video: '' // Aseguramos que este campo exista en el estado inicial
     });
 
     const handleSubmit = async (e) => {
@@ -36,7 +45,7 @@ function RecursoForm({ onClose, onRecursoCreated }) {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             alert('Recurso publicado con éxito');
-            onRecursoCreated(); // Recargar la lista
+            if (onRecursoCreated) onRecursoCreated(); // Recargar la lista
             onClose(); // Cerrar modal
         } catch (error) {
             console.error(error);

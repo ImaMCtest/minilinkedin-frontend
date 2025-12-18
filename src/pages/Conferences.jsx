@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NavBar from '../components/layouts/NavBar';
-import RecursoForm from '../features/resources/components/RecursoForm'; // Importamos el modal
+import RecursoForm from '../features/resources/components/RecursoForm';
 import './Conferences.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faVideo, faFileAlt, faPlus, faUniversity, faClock } from '@fortawesome/free-solid-svg-icons';
+import { faVideo, faFileAlt, faPlus, faUniversity } from '@fortawesome/free-solid-svg-icons';
 
-const API_URL = 'http://localhost:5000/api/recursos';
+// -----------------------------------------------------------------------------
+// 🎯 CAMBIO "IDEAL": Configuración Dinámica de la URL
+// -----------------------------------------------------------------------------
+// 1. Detecta la URL base (Vercel o Localhost)
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+// 2. Construye la ruta específica para leer los recursos
+const API_URL = `${BASE_URL}/api/recursos`;
+// -----------------------------------------------------------------------------
 
 const Conferences = () => {
     const [activeTab, setActiveTab] = useState('investigaciones'); // 'investigaciones' o 'videos'
@@ -32,7 +40,6 @@ const Conferences = () => {
     }, []);
 
     // 2. FILTRAR EN EL FRONTEND (Separar Tesis de Videos)
-    // El backend manda todo junto, aquí lo separamos según la pestaña activa
     const recursosFiltrados = recursos.filter(item => {
         if (activeTab === 'investigaciones') {
             return item.tipo === 'TESIS' || item.tipo === 'ARTICULO';
@@ -48,9 +55,6 @@ const Conferences = () => {
         if (item.tipo === 'TESIS' || item.tipo === 'ARTICULO') {
             urlDestino = item.detalles.url_pdf;
         } else if (item.tipo === 'VIDEO' || item.tipo === 'EVENTO') {
-            // LÓGICA CORREGIDA:
-            // Busca 'url_video'. Si no existe, busca 'link_reunion'.
-            // Esto arregla el error si la plataforma no es YouTube o si es un Evento.
             urlDestino = item.detalles.url_video || item.detalles.link_reunion;
         }
 
@@ -61,11 +65,10 @@ const Conferences = () => {
         }
 
         // 2. LÓGICA INTELIGENTE: ¿Es un documento o un link normal?
-        // Expresión regular para detectar archivos de ofimática o PDF
         const esDocumento = /\.(pdf|doc|docx|ppt|pptx|xls|xlsx)$/i.test(urlDestino);
 
         if (esDocumento) {
-            // OPCIÓN A: Abrir VISOR DE GOOGLE en una ventana emergente (Popup) centrada
+            // OPCIÓN A: Visor de Google
             const googleViewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(urlDestino)}&embedded=true`;
 
             // Calculamos centro de la pantalla
@@ -129,12 +132,12 @@ const Conferences = () => {
                                 <div className="card-info">
                                     <h3>{item.titulo}</h3>
 
-                                    {/* Autor (Poblado desde Backend) */}
+                                    {/* Autor */}
                                     <p className="card-author">
                                         Por: {item.autor_id ? item.autor_id.nombre : 'Anónimo'}
                                     </p>
 
-                                    {/* Detalles Dinámicos (Polimorfismo Visual) */}
+                                    {/* Detalles Dinámicos */}
                                     <span className="card-meta">
                                         {item.tipo} •
                                         {item.tipo === 'TESIS' && ` 🏛 ${item.detalles.universidad || 'Univ. desconocida'}`}
@@ -149,7 +152,7 @@ const Conferences = () => {
 
                                 <button
                                     className="btn-ver"
-                                    onClick={() => handleAbrirRecurso(item)} // <--- AQUÍ CONECTAMOS LA LÓGICA
+                                    onClick={() => handleAbrirRecurso(item)}
                                 >
                                     {item.tipo === 'VIDEO' ? 'Ver Video' : 'Leer Documento'}
                                 </button>
@@ -164,11 +167,11 @@ const Conferences = () => {
                 </div>
             </div>
 
-            {/* MODAL (Solo se muestra si showModal es true) */}
+            {/* MODAL */}
             {showModal && (
                 <RecursoForm
                     onClose={() => setShowModal(false)}
-                    onRecursoCreated={fetchRecursos} // Pasa la función para recargar la lista
+                    onRecursoCreated={fetchRecursos}
                 />
             )}
         </>

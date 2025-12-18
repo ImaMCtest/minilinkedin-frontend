@@ -7,10 +7,17 @@ import {
     faUserCircle, faCog, faEnvelope, faTrashAlt, faSignOutAlt, faChevronDown
 } from '@fortawesome/free-solid-svg-icons';
 
-// 🎯 CAMBIO: Importación relativa correcta (están en la misma carpeta)
 import './NavBar.css';
 
-const API_URL = 'http://localhost:5000/api/usuarios';
+// -----------------------------------------------------------------------------
+// 🎯 CAMBIO "IDEAL": Configuración Dinámica de la URL
+// -----------------------------------------------------------------------------
+// 1. Detecta la URL base (Si estás en Vercel usa la variable, si no, localhost)
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+// 2. Construye la ruta específica para este componente (usuarios)
+const API_URL = `${BASE_URL}/api/usuarios`;
+// -----------------------------------------------------------------------------
 
 function NavBar() {
     const navigate = useNavigate();
@@ -20,7 +27,6 @@ function NavBar() {
     const toggleMenu = () => setShowMenu(!showMenu);
 
     const handleLogout = () => {
-        // Limpiamos todo el almacenamiento
         localStorage.clear();
         navigate('/login');
     };
@@ -32,6 +38,7 @@ function NavBar() {
 
         try {
             const token = localStorage.getItem('token');
+            // Aquí ya usa la API_URL dinámica que definimos arriba
             await axios.delete(`${API_URL}/me`, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
@@ -88,8 +95,8 @@ function NavBar() {
                             <button
                                 className="menu-item"
                                 onClick={() => {
-                                    navigate('/perfil'); // Redirige a la ruta
-                                    setShowMenu(false);  // Cierra el menú desplegable automáticamente
+                                    navigate('/perfil');
+                                    setShowMenu(false);
                                 }}
                             >
                                 <FontAwesomeIcon icon={faCog} /> Configuración

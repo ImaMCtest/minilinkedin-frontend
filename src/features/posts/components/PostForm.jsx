@@ -4,9 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faImage, faCalendarAlt, faPenFancy, faTimes, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import './PostForm.css'; // O './css/Posts.css'
 
-const API_URL = 'http://localhost:5000/api/publicaciones';
+// -----------------------------------------------------------------------------
+// 🎯 CAMBIO "IDEAL": Configuración Dinámica de la URL
+// -----------------------------------------------------------------------------
+// 1. Detecta la URL base (Vercel o Localhost)
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
-// Sub-componente simple para botones de acción (Multimedia, Evento, etc.)
+// 2. Construye la ruta específica para las publicaciones
+const API_URL = `${BASE_URL}/api/publicaciones`;
+// -----------------------------------------------------------------------------
+
+// Sub-componente simple para botones de acción
 const ActionButton = ({ icon, label, onClick }) => (
     <button type="button" className="action-button" onClick={onClick}>
         <FontAwesomeIcon icon={icon} className="action-icon" />
@@ -35,7 +43,7 @@ function PostForm({ onPostCreated }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!contenido.trim()) return; // Evitar enviar espacios vacíos
+        if (!contenido.trim()) return;
 
         setIsSubmitting(true);
         const token = localStorage.getItem('token');

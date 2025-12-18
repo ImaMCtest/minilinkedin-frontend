@@ -3,7 +3,15 @@ import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import './Auth.css';
 
-const API_URL = 'http://localhost:5000/api/usuarios/registro';
+// -----------------------------------------------------------------------------
+// 🎯 CAMBIO "IDEAL": Configuración Dinámica de la URL
+// -----------------------------------------------------------------------------
+// 1. Detecta la URL base (Vercel o Localhost)
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+// 2. Construye la ruta específica para el Registro
+const API_URL = `${BASE_URL}/api/usuarios/registro`;
+// -----------------------------------------------------------------------------
 
 function RegistroForm() {
     const navigate = useNavigate();
@@ -67,7 +75,6 @@ function RegistroForm() {
                     <div className="form-buttons-row">
                         <button type="submit" className="submit-btn">Registrarme</button>
 
-                        {/* OPTIMIZACIÓN: Link directo, ahorra una función handler */}
                         <Link to="/login" className="login-redirect-btn">
                             Ya tengo cuenta
                         </Link>

@@ -3,9 +3,17 @@ import axios from 'axios';
 import NavBar from '../components/layouts/NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserEdit, faMapMarkerAlt, faBriefcase, faSave } from '@fortawesome/free-solid-svg-icons';
-import './Profile.css'; // Crearemos este CSS abajo
+import './Profile.css';
 
-const API_URL = 'http://localhost:5000/api/usuarios';
+// -----------------------------------------------------------------------------
+// 🎯 CAMBIO "IDEAL": Configuración Dinámica de la URL
+// -----------------------------------------------------------------------------
+// 1. Detecta la URL base (Vercel o Localhost)
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+// 2. Construye la ruta específica para usuarios
+const API_URL = `${BASE_URL}/api/usuarios`;
+// -----------------------------------------------------------------------------
 
 const Profile = () => {
     const [usuario, setUsuario] = useState(null);
@@ -26,6 +34,7 @@ const Profile = () => {
         const fetchPerfil = async () => {
             const token = localStorage.getItem('token');
             try {
+                // OJO: Aquí usamos la API_URL dinámica
                 const res = await axios.get(`${API_URL}/perfil`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
@@ -71,6 +80,7 @@ const Profile = () => {
         };
 
         try {
+            // OJO: Aquí usamos la API_URL dinámica
             const res = await axios.put(`${API_URL}/perfil`, payload, {
                 headers: { 'Authorization': `Bearer ${token}` }
             });

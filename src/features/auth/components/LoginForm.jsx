@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom'; // Agregamos Link
+import { useNavigate, Link } from 'react-router-dom';
 import './Auth.css';
 
-const API_URL = 'http://localhost:5000/api/usuarios/login';
+// -----------------------------------------------------------------------------
+// 🎯 CAMBIO "IDEAL": Configuración Dinámica de la URL
+// -----------------------------------------------------------------------------
+// 1. Detecta la URL base (Vercel o Localhost)
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
+// 2. Construye la ruta específica para el Login
+const API_URL = `${BASE_URL}/api/usuarios/login`;
+// -----------------------------------------------------------------------------
 
 function LoginForm() {
     const navigate = useNavigate();
@@ -27,7 +35,7 @@ function LoginForm() {
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('nombreUsuario', res.data.nombre);
 
-            // Redirección inmediata (no hace falta mensaje de éxito si cambias de página rápido)
+            // Redirección inmediata
             navigate('/dashboard');
 
         } catch (err) {
@@ -37,7 +45,6 @@ function LoginForm() {
     };
 
     return (
-        // Antes: <div className="login-container">
         <div className="auth-container">
             <div className="login-container">
                 <h2>🔑 Iniciar Sesión</h2>
@@ -64,14 +71,12 @@ function LoginForm() {
                     <div className="form-buttons-row">
                         <button type="submit" className="submit-btn">Entrar</button>
 
-                        {/* OPTIMIZACIÓN: Usamos Link en lugar de función + useNavigate */}
                         <Link to="/registro" className="login-redirect-btn">
                             Registrarme
                         </Link>
                     </div>
                 </form>
 
-                {/* Renderizado condicional limpio */}
                 {feedback.msg && (
                     <p className={feedback.isError ? 'msg-error' : 'msg-success'}>
                         {feedback.msg}
