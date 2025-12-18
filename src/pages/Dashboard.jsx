@@ -116,6 +116,7 @@ const Dashboard = () => {
                             <ul>
                                 <li>📅 Conferencia IA - 20 Nov</li>
                                 <li>📚 Nueva biblioteca digital disponible</li>
+                                {/*console.log("HOLAAA MUNDO");*/}
                             </ul>
                         </div>
                     </aside>
