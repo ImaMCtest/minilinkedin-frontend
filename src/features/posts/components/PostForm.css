@@ -1,0 +1,163 @@
+/* =================================================================
+   FORMULARIO DE CREACIÓN DE POSTS
+   ================================================================= */
+
+/* 1. Contenedores (Cerrado y Abierto) */
+.post-form-card,
+.post-form-container {
+    background-color: #2c2c2c;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid #333;
+    color: #eee;
+}
+
+/* 2. Cabecera (Usuario y cerrar) */
+.post-form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #3f3f3f;
+}
+
+.header-user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.post-author {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: #fff;
+}
+
+/* 3. Área de Texto */
+.post-input-area {
+    width: 100%;
+    background-color: #3f3f3f;
+    border: 1px solid #555;
+    border-radius: 6px;
+    color: #fff;
+    padding: 15px;
+    font-size: 1em;
+    resize: vertical;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.post-input-area:focus {
+    outline: none;
+    border-color: #0077b5;
+}
+
+/* 4. Botones de Acción (Foto, Evento) */
+.action-buttons-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.action-button {
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.action-button:hover {
+    background-color: #3f3f3f;
+    color: #fff;
+}
+
+/* 5. Footer (Anonimato y Publicar) */
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    border-top: 1px solid #3f3f3f;
+    padding-top: 10px;
+}
+
+.publish-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Checkbox Anónimo personalizado */
+.anon-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: #ccc;
+    font-size: 0.9em;
+    user-select: none;
+}
+
+.submit-post-btn {
+    background-color: #0077b5;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.2s;
+}
+
+.submit-post-btn:hover:not(:disabled) {
+    background-color: #005f93;
+}
+
+.submit-post-btn:disabled {
+    background-color: #444;
+    cursor: not-allowed;
+    color: #888;
+}
+
+/* 6. Vista Previa (Línea inicial) */
+.post-form-preview-line {
+    display: flex;
+    align-items: center;
+    background-color: #3f3f3f;
+    border: 1px solid #555;
+    border-radius: 20px;
+    padding: 10px 15px;
+    cursor: text;
+    color: #999;
+    transition: border-color 0.2s;
+}
+
+.post-form-preview-line:hover {
+    border-color: #0077b5;
+}

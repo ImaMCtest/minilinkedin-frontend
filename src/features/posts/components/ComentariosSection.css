@@ -1,0 +1,67 @@
+/* =================================================================
+   SECCIÓN DE COMENTARIOS
+   ================================================================= */
+
+.comentarios-section {
+    margin-top: 15px;
+    padding-left: 10px;
+    /* Indentación visual para jerarquía */
+    border-left: 2px solid #3f3f3f;
+    /* Línea guía visual a la izquierda */
+}
+
+/* Título pequeño "Comentarios (3)" */
+.comentarios-section h4 {
+    font-size: 0.85em;
+    color: #aaa;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Tarjeta individual de cada comentario */
+.comentario-item {
+    background-color: #252525;
+    /* Fondo ligeramente más oscuro que el post */
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    border: 1px solid #333;
+}
+
+/* Cabecera del comentario (Autor y Fecha) */
+.comentario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: #ddd;
+    font-size: 0.95em;
+}
+
+.comment-date {
+    font-size: 0.8em;
+    color: #777;
+}
+
+/* Texto del comentario */
+.comment-content {
+    color: #ccc;
+    line-height: 1.4;
+    margin: 0;
+    word-break: break-word;
+    /* Evita que palabras largas rompan el diseño */
+}
+
+/* Mensaje cuando no hay comentarios */
+.no-comments-msg {
+    color: #666;
+    font-style: italic;
+    font-size: 0.9em;
+    padding: 10px 0;
+}

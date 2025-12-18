@@ -1,0 +1,102 @@
+/* =================================================================
+   VISUALIZACIÓN DE UN POST INDIVIDUAL
+   ================================================================= */
+
+.post-item {
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: #eee;
+    border: 1px solid #333;
+}
+
+/* Cabecera del Post */
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profile-placeholder {
+    width: 40px;
+    height: 40px;
+    background-color: #555;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-right: 12px;
+}
+
+.post-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-author {
+    font-weight: bold;
+    font-size: 1em;
+    color: #fff;
+}
+
+.post-date {
+    font-size: 0.8em;
+    color: #aaa;
+}
+
+.anon-tag {
+    font-size: 0.8em;
+    color: #f39c12;
+    /* Un color naranja suave para resaltar */
+    margin-left: 5px;
+}
+
+/* Contenido */
+.post-content {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    white-space: pre-wrap;
+    /* Respeta saltos de línea */
+}
+
+/* Interacciones (Botones abajo) */
+.post-interactions {
+    display: flex;
+    gap: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #3f3f3f;
+}
+
+.interact-btn {
+    background: none;
+    border: none;
+    color: #aaa;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.interact-btn:hover {
+    background-color: #3f3f3f;
+    color: #0077b5;
+}
+
+.comment-count {
+    font-size: 0.9em;
+    color: #888;
+    align-self: center;
+}
+
+/* Separador simple */
+.post-divider {
+    border: 0;
+    border-top: 1px solid #3f3f3f;
+    margin: 10px 0;
+}

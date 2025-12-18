@@ -1,0 +1,90 @@
+/* =================================================================
+   ESTILOS COMPARTIDOS DE AUTENTICACIÓN (Auth.css)
+   ================================================================= */
+
+/* 1. Contenedor Principal (Sirve para Login y Registro) */
+.auth-container {
+    max-width: 400px;
+    margin: 100px auto 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #2c2c2c;
+    color: white;
+    /* Aseguramos texto blanco por el fondo oscuro */
+}
+
+/* 2. Inputs Generales */
+.auth-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #555;
+    background-color: #fff;
+}
+
+/* 3. Fila de Botones */
+.form-buttons-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Regla para que TANTO el botón como el enlace ocupen el mismo ancho */
+.submit-btn,
+.login-redirect-btn {
+    flex: 1;
+    /* Esto hace que ambos botones midan lo mismo */
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+    box-sizing: border-box;
+    /* Importante para que el padding no rompa el tamaño */
+    font-family: inherit;
+    /* Heredar fuente del sistema */
+}
+
+/* 4. Estilos Específicos de Botones */
+.submit-btn {
+    background-color: #0077b5;
+    color: white;
+    border: none;
+}
+
+.submit-btn:hover {
+    background-color: #005f93;
+}
+
+.login-redirect-btn {
+    background-color: #333;
+    color: #0077b5;
+    border: 1px solid #0077b5;
+    text-decoration: none;
+    /* Quita el subrayado del Link */
+    display: inline-block;
+    /* Necesario para que el Link respete paddings */
+}
+
+.login-redirect-btn:hover {
+    background-color: #444;
+}
+
+/* 5. Mensajes de Feedback (Agregados según nuestra mejora anterior) */
+.msg-error {
+    margin-top: 20px;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.msg-success {
+    margin-top: 20px;
+    color: #27ae60;
+    font-weight: bold;
+}

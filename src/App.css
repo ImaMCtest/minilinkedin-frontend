@@ -1,0 +1,53 @@
+/* =================================================================
+   A. ESTILOS BASE Y BOILERPLATE DE VITE/REACT (Originales)
+   
+   IMPORTANTE: Solo se mantienen los estilos que aplican a toda la aplicación (globales/resets).
+   Todos los estilos específicos de componentes han sido movidos a archivos modulares.
+   ================================================================= */
+
+#root {
+  /* Estas reglas son críticas para que el layout Grid pueda expandirse */
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Estilos base de Vite (Logos, animaciones) */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+/* Utilidades globales */
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}

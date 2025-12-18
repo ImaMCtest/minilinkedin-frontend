@@ -1,0 +1,193 @@
+/* =================================================================
+   ESTILOS DE LA BARRA DE NAVEGACIÓN
+   ================================================================= */
+
+/* 1. CONTENEDOR PRINCIPAL */
+.navbar-custom {
+    background-color: #0077b5;
+    color: white;
+    padding: 0 20px;
+    /* Un poco más de aire a los lados */
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+/* 2. LOGO */
+.navbar-logo a {
+    color: white;
+    font-size: 1.2em;
+    font-weight: 800;
+    /* Más grueso para destacar */
+    text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+/* 3. ENLACES DE NAVEGACIÓN */
+.navbar-links {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.nav-item {
+    color: rgba(255, 255, 255, 0.85);
+    /* Blanco suave por defecto */
+    text-decoration: none;
+    font-size: 0.95em;
+    padding: 8px 12px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover,
+.nav-item:focus {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* 4. PERFIL Y MENÚ DE USUARIO */
+.profile-menu-container {
+    position: relative;
+    margin-left: 20px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    /* Separador sutil */
+    padding-left: 20px;
+}
+
+.icon-profile-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    /* Forma de píldora */
+    transition: background-color 0.2s;
+}
+
+.icon-profile-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.profile-avatar {
+    font-size: 1.5em;
+}
+
+.profile-arrow {
+    font-size: 0.8em;
+    opacity: 0.7;
+    transition: transform 0.2s;
+}
+
+/* Rotar flecha si el menú está abierto (Opcional, requiere clase activa) */
+.icon-profile-btn:active .profile-arrow {
+    transform: rotate(180deg);
+}
+
+/* 5. MENÚ DESPLEGABLE (DROPDOWN) */
+.dropdown-menu {
+    position: absolute;
+    top: 50px;
+    /* Debajo del botón */
+    right: 0;
+    width: 240px;
+    background-color: #2c2c2c;
+    border: 1px solid #444;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    /* Sombra profunda */
+    z-index: 2000;
+    overflow: hidden;
+    animation: fadeIn 0.15s ease-out;
+    transform-origin: top right;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.menu-header {
+    padding: 15px;
+    background-color: #232323;
+    border-bottom: 1px solid #3f3f3f;
+    color: #fff;
+    font-size: 0.9em;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    background: none;
+    color: #ccc;
+    font-size: 0.9em;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.menu-item svg {
+    width: 20px;
+    margin-right: 12px;
+    text-align: center;
+    color: #888;
+}
+
+.menu-item:hover {
+    background-color: #3f3f3f;
+    color: white;
+}
+
+.menu-item:hover svg {
+    color: white;
+}
+
+.menu-divider {
+    height: 1px;
+    background-color: #3f3f3f;
+    margin: 5px 0;
+}
+
+/* Botones con acciones peligrosas o importantes */
+.delete-btn {
+    color: #e74c3c;
+}
+
+.delete-btn:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #c0392b;
+}
+
+.delete-btn svg {
+    color: #e74c3c;
+}
+
+.logout-item {
+    font-weight: 600;
+    color: #fff;
+}

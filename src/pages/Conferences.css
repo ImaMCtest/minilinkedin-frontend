@@ -1,0 +1,195 @@
+/* =================================================================
+   PÁGINA DE CONFERENCIAS
+   ================================================================= */
+
+/* Cabecera */
+.conferencias-header {
+    background-color: #2c2c2c;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #333;
+}
+
+.header-text h2 {
+    color: #0077b5;
+    margin-bottom: 5px;
+    font-size: 1.8em;
+}
+
+.header-text p {
+    color: #bbb;
+    margin: 0;
+}
+
+.btn-crear-evento {
+    background-color: #0077b5;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+}
+
+.btn-crear-evento:hover {
+    background-color: #005f8f;
+}
+
+/* Navegación de Pestañas */
+.tabs-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #3f3f3f;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.1em;
+    cursor: pointer;
+    padding: 15px 20px;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tab-btn.active {
+    color: #0077b5;
+    border-bottom: 3px solid #0077b5;
+    font-weight: bold;
+}
+
+.tab-btn:hover:not(.active) {
+    color: #ccc;
+}
+
+/* GRID DE TARJETAS */
+.conferencias-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-bottom: 50px;
+}
+
+/* Tarjeta Genérica (Resource Card) */
+.resource-card {
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #333;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.resource-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-color: #444;
+}
+
+/* Iconos y Miniaturas */
+.card-icon-box,
+.card-thumbnail-box {
+    width: 50px;
+    height: 50px;
+    background-color: #3f3f3f;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0077b5;
+    font-size: 1.4em;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+/* Variación para Video (quizás rojo o diferente) */
+.video-card .card-thumbnail-box {
+    color: #e74c3c;
+    /* Color rojizo para videos */
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* Información Central */
+.card-info {
+    flex-grow: 1;
+}
+
+.card-info h3 {
+    margin: 0 0 5px 0;
+    color: white;
+    font-size: 1.1em;
+}
+
+.card-author {
+    margin: 0;
+    color: #bbb;
+    font-size: 0.9em;
+}
+
+.card-meta {
+    font-size: 0.8em;
+    color: #666;
+    display: block;
+    margin-top: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Botón de Acción */
+.btn-ver {
+    background: transparent;
+    border: 1px solid #555;
+    color: #ccc;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.btn-ver:hover {
+    border-color: #0077b5;
+    color: #0077b5;
+    background-color: rgba(0, 119, 181, 0.1);
+}
+
+/* Responsive para Conferencias */
+@media (max-width: 768px) {
+    .conferencias-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .resource-card {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .card-icon-box {
+        margin-right: 0;
+    }
+
+    .btn-ver {
+        width: 100%;
+    }
+}
